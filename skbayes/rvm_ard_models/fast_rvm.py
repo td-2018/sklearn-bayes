@@ -28,8 +28,8 @@ def update_precisions(Q,S,q,s,A,active,tol,n_samples,clf_bias):
     
     # identify features that can be added , recomputed and deleted in model
     theta        =  q**2 - s 
-    add          =  (theta > 0) * (active == False)
-    recompute    =  (theta > 0) * (active == True)
+    add          =  (theta > 0) * np.equal(active,False)
+    recompute    =  (theta > 0) * np.equal(active,True)
     delete       = ~(add + recompute)
     
     # compute sparsity & quality parameters corresponding to features in 
